@@ -4,7 +4,7 @@ var dt = require('./dateModule');
 
 //createServer creates an HTTP server object
 http.createServer(function (req, res) { 
-	res.writeHead(200, {'Content-Type': 'text/plain'}); 
+	res.writeHead(200, {'Content-Type': 'text/plain'}); //The result is supposed to be displayed as HTML
 	res.write("The date and time are currently: " + dt.myDateTime()); //write a response to the client
 	res.end('Hello World!'); //end the response
 	console.log("Response sent"); 
