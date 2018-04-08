@@ -15,3 +15,6 @@ http.createServer(function (req, res) { //req argument represents the request fr
 	console.log("Response sent"); 
 }).listen(8080); //the server object listens on port 8080
 console.log("A node web server is running!");
+
+
+//example URL: http://localhost:8080/?year=2017&month=July
