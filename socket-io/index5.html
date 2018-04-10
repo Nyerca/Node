@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Hello world</title>
+   </head>
+   <script src = "/socket.io/socket.io.js"></script>
+   <script>
+   //var socket = io();
+   //This will connect the client to the default namespace. 
+   //All events on this namespace connection will be handled by the io object on the server.
+      var socket = io();
+      socket.on('newclientconnect',function(data) {
+         document.body.innerHTML = '';
+         document.write(data.description);
+      });
+   </script>
+   <body>Hello world</body>
+</html>
