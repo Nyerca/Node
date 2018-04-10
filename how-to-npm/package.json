@@ -1,0 +1,21 @@
+{
+  "name": "first_pkg",
+  "version": "1.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Nyerca",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {},
+  "description": "My first pkg",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nyerca/Node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nyerca/Node/issues"
+  },
+  "homepage": "https://github.com/Nyerca/Node#readme"
+}

@@ -1,0 +1,103 @@
+https://www.npmjs.com/
+
+Run `npm init` to create a package.json file.
+
+However, when you run
+	this in the Real World, it'll create a real account, with a page
+	on npmjs.com and the ability to publish packages that real live
+	humans can install and enjoy.
+	To see who you're logged in as, run `npm whoami`
+	To create your account, run `npm adduser`
+
+npm helps you build projects, but for npm to be able to do that, you need
+	to tell npm a little bit about your project. You can tell npm about your
+	project in a file called package.json.
+	Run `npm init --scope=<username>`. This will create a package.json file.
+	(For extra credit, set the project up with a git repo as well.)
+	The convention is to have a single git repo for each module or project.
+	Use the `git init` command to set up your working dir as a git project.
+
+To install an npm module, use the `npm install <modulename>` command.
+
+npm also shows you what you
+	have installed (your dependencies).
+	You can do this using the `npm ls` command.
+
+npm can be used as a task runner with its "scripts" property.  Almost
+	every module and project will have a test script that runs to make
+	sure everything is good.
+	create a file called `test.js`
+Then, edit your `package.json` file to make your scripts section look like
+     this instead:
+       "scripts": {
+         "test": "node test.js"
+       },
+If you wanted to actually run any tests you'd written in
+     `test.js` with the "test" script, you'd run `npm test`.
+
+In order to publish the package.json file we need to add
+	-a README.md file
+	-Then, add a "repository" field in your package.json file, with a url
+     where people can access the code.
+	-You can edit your package.json file by hand, or run `npm init` again.
+
+Packages get into the registry by using the `npm publish` command.
+
+In order to view your package content, just ran this command:
+  npm view first_pkg
+       1.2.3
+       ^ ^ ^
+       | | `-- Patch version. Update for every change.
+       | `---- Minor version. Update for API additions.
+       `------ Major version. Update for breaking API changes.
+
+     npm has a special command called `npm version` which will update your
+     package.json file for you, and also commit the change to git if your
+     project is a git repository.
+Or, if you don't trust the machines, you can open up your package.json
+     file by hand, and put some new numbers in the "version" field.
+     The npm registry won't let you publish a new release of your package
+     without updating the version number!
+
+--------------
+if you need to publish something, and *not* make it the
+     default version of a package (for example, if it's a security release
+     for a legacy version, or something), then you can manually manage
+     these distribution tags with the `dist-tag` function.
+
+     `npm dist-tag add <pkg>@<version> [<tag>]` will add a new tag.
+     To find out the name of your current package/version type `npm ls`.
+     The first line of the output will be the package and version; e.g. pkg@1.0.1.
+     To add a tag type in the name of the tag.
+
+       npm dist-tag add first_pkg@1.0.1 beta
+----------------
+ The only dist-tag you CAN'T ever remove is "latest".  That's because
+     every package installs its "latest" tag by default, so that tag has
+     some special semantics.
+
+     You CAN point "latest" to a different version, or delete other tags.
+
+     Let's delete all the tags that we can, and also point "latest" at
+     something other than the most recent release.
+npm dist-tag rm first_pkg beta
+npm dist-tag add first_pkg@1.0.0 latest
+---------------------
+we can detect compatible releases
+     programmatically with the `npm outdated` command.
+
+It's fine, of course, to explicitly check for outdated modules,
+     and then run `npm install` to pull them in.
+---------------------------
+Enter the `npm rm` command (aka `npm uninstall` if you prefer to
+     type things out long-hand).
+
+     Remove all the deps!  But, make sure that you don't keep depending on them.
+
+     Just like you can use `--save` on installing packages, you can also
+     use `--save` when removing packages, to also remove them from your
+     package.json file.
+npm uninstall @linclark/pkg
+You have removed the packages from your node_modules folder,
+    and also updated your package.json file to reflect that you're no longer
+    depending on them.
