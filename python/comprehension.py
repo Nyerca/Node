@@ -16,3 +16,18 @@ print(squares);
 
 # map(func, seq): applica la funzione func a tutti gli elementi di seq e ritorna un nuovo iterabile;
 # filter(func, seq): ritorna un iterabile che contiene tutti gli elementi di seq per cui func(elem) è true.
+
+# definisco una funzione che ritorna il quadrato di un numero
+def square(n):
+    return n**2
+squares = map(square, range(10))
+print(list(squares))  # convertendolo in lista si possono vedere gli elementi
+
+def is_even(n):
+    if n%2 == 0:
+        return True
+    else:
+        return False
+		
+even = filter(is_even, range(10))
+print(list(even))
